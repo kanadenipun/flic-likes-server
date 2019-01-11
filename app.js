@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var bluebird = require('bluebird')
+var mongoose = require('mongoose')
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -37,5 +40,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+mongoose.connect(process.env.TODO_DB_URL, { useMongoClient: true})
+.then(()=> { console.log(`Succesfully Connected to the Mongodb Database)})
+.catch(()=> { console.log(`Error Connecting to the Mongodb Database)})
 
 module.exports = app;
