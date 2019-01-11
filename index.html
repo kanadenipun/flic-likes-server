@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The invite likes</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  font-size: 150px;
+  color: #445a92;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+}
+</style>
+</head>
+  <body>
+  <div>
+  <div class="container">
+    <div>
+    <img src="https://en.wikipedia.org/wiki/Like_button#/media/File:Facebook_like_thumb.png" style="width:25%"/>
+    </div>
+    <div id="count" class="centered"></div>
+  </div>
+  </div>
+<script>
+  window.setInterval(() => fetch('https://api.mlab.com/api/1/databases/likes/collections/likes?apiKey=<key>').then(likes => likes.json()).then(likes =>  document.getElementById("count").innerText = likes.length),2000);
+  </script>
+
+</body>
+</html>
