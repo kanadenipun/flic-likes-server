@@ -42,7 +42,7 @@ app.use(function(err, req, res, next) {
 });
 
 mongoose.connect(process.env.TODO_DB_URL, { useMongoClient: true})
-.then(()=> { console.log(`Succesfully Connected to the Mongodb Database)})
-.catch(()=> { console.log(`Error Connecting to the Mongodb Database)})
+.then(()=> { console.log('Succesfully Connected to the Mongodb Database')})
+.catch(()=> { console.log('Error Connecting to the Mongodb Database')})
 
 module.exports = app;
