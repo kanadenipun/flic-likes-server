@@ -7,8 +7,8 @@ var logger = require('morgan');
 var bluebird = require('bluebird')
 var mongoose = require('mongoose')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var index = require('./routes/index.route');
+var api = require('./routes/api.route')
 
 var app = express();
 
@@ -22,8 +22,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', index);
+app.use('/api', api);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,7 +42,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-mongoose.connect(process.env.TODO_DB_URL, { useMongoClient: true})
+mongoose.connect(process.env.FLIC_LIKES_DB_URL, { useMongoClient: true})
 .then(()=> { console.log('Succesfully Connected to the Mongodb Database')})
 .catch(()=> { console.log('Error Connecting to the Mongodb Database')})
 
