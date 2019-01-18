@@ -29,7 +29,7 @@
   </div>
   </div>
 <script>
-  window.setInterval(() => fetch('https://flic-likes-server.herokuapp.com/api/likes').then(likes => likes.json()).then(likes =>  document.getElementById("count").innerText = likes.data),2000);
+  window.setInterval(() => fetch('https://flic-likes-server.herokuapp.com/api/likes').then(likes => likes.json()).then(likes =>  document.getElementById("count").innerText = likes.data),1000);
   </script>
 
 </body>
